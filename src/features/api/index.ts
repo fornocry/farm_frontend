@@ -7,6 +7,6 @@ if (import.meta.env.DEV) {
     axios.defaults.baseURL = 'http://localhost:8001'
 } else if (import.meta.env.PROD) {
     console.log('NODE_ENV is production');
-    console.log(`API url ${import.meta.env.VITE_API_URL}`)
+    console.log(`API url https://api.gentelmanclub.pro`)
     axios.defaults.baseURL = "https://api.gentelmanclub.pro"
 }
