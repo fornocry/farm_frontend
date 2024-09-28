@@ -7,4 +7,4 @@ COPY --from=build-env /app /app
 WORKDIR /app
 ENV NODE_ENV production
 RUN npm run build && npm install -g serve
-CMD ["serve", "dist", "-p", "5000"]
+CMD ["serve","-s","dist", "-p", "5000"]
