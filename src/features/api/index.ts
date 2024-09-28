@@ -8,5 +8,5 @@ if (import.meta.env.DEV) {
 } else if (import.meta.env.PROD) {
     console.log('NODE_ENV is production');
     console.log(`API url ${import.meta.env.VITE_API_URL}`)
-    axios.defaults.baseURL = import.meta.env.VITE_API_URL
+    axios.defaults.baseURL = "https://api.gentelmanclub.pro"
 }
