@@ -50,10 +50,11 @@ export default function FriendPlace({referral}: { referral: UserReferral | null 
 
 export function InviteFriend({referralLink}: { referralLink: string }) {
 
-    const openLink = () => {
-        window.open(referralLink)
-    }
+    let href_ref = "https://t.me/share/url?url=" + referralLink + "&text=🌟 Start farming"
 
+    const openLink = () => {
+        window.open(href_ref)
+    }
     return (
         <div
             onClick={() => {
@@ -61,7 +62,7 @@ export function InviteFriend({referralLink}: { referralLink: string }) {
             }}
             className="w-[90%] h-[6vh] border-t border-b border-l border-[0.75px] bg-white z-20 rounded-[10px] mb-2">
             <div className="flex w-full h-full items-center justify-center p-2">
-                <p className="font-NeueHaas font-bold text-black text-center text-xl">
+                <p className="font-NeueHaas font-semibold text-black text-center text-xl">
                     Invite friends
                 </p>
             </div>
