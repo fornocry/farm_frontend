@@ -10,4 +10,4 @@ ENV NODE_ENV=$NODE_ENV
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build && npm install -g serve
-CMD ["serve", "dist", "-p", "5000"]
+CMD ["serve","-s", "dist", "-p", "5000"]
