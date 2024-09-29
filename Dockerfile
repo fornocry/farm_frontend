@@ -14,5 +14,4 @@ FROM node:22
 WORKDIR /app
 COPY --from=build-env /app /app
 ENV NODE_ENV production
-RUN npm run build && npm install -g serve
-CMD ["serve", "-s", "dist", "-p", "5000"]
+CMD ["vite", "preview", "--port", "5000"]

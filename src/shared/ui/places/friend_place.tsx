@@ -11,7 +11,6 @@ export default function FriendPlace({referral}: { referral: UserReferral | null 
         : referral?.FirstName ?? "No name";
 
 
-
     return (
         <div
             className="w-full border-t border-b border-l border-[#6EA0AF] border-[0.75px] bg-white z-20 rounded-[10px] mb-1">
@@ -38,35 +37,36 @@ export default function FriendPlace({referral}: { referral: UserReferral | null 
                             <p className="font-NeueHaas font-semibold text-black">
                                 {fullName}
                             </p>
-                            {/*{referral?.Status !== null ?*/}
-                            {/*    <p className="font-NeueHaas font-semibold ml-2 text-textGray">*/}
-                            {/*        ({referral?.Status})*/}
-                            {/*    </p> : <></>}*/}
                         </div>
                         <div className="flex items-center">
-                            {/*<img*/}
-                            {/*    src={taskInfo.task.reward.preview_icon}*/}
-                            {/*    className="w-4 h-4 mr-1" // Adjust width and height to match text size*/}
-                            {/*    alt="Reward Icon" // Add alt text for accessibility*/}
-                            {/*/>*/}
                             <p className="font-NeueHaas text-textGray text-xs">{referral?.Username ? `@${referral.Username}` : ''}</p>
                         </div>
                     </div>
-
                 </div>
-                {/*<div className="pr-5">*/}
-                {/*    <div className="h-6 aspect-square rounded-[6px] flex items-center justify-center"*/}
-                {/*         style={{backgroundColor: true ? "#00B54A" : "#DCE1DE"}}>*/}
-                {/*        <img*/}
-                {/*            src="/svgs/check_icon.svg"*/}
-                {/*            className="h-[80%]"*/}
-                {/*            alt="Navigation arrow"*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
         </div>
     )
 }
 
+export function InviteFriend({referralLink}: { referralLink: string }) {
+
+    const openLink = () => {
+        window.open(referralLink)
+    }
+
+    return (
+        <div
+            onClick={() => {
+                openLink()
+            }}
+            className="w-[90%] h-[6vh] border-t border-b border-l border-[0.75px] bg-white z-20 rounded-[10px] mb-2">
+            <div className="flex w-full h-full items-center justify-center p-2">
+                <p className="font-NeueHaas font-bold text-black text-center text-xl">
+                    Invite friends
+                </p>
+            </div>
+        </div>
+
+    )
+}
 
