@@ -1,10 +1,31 @@
-FROM node:22 AS build-env
-WORKDIR /app
-COPY . .
-RUN npm install
-FROM node:22
-WORKDIR /app
-COPY --from=build-env /app /app
+# syntax=docker/dockerfile:1
+
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Dockerfile reference guide at
+# https://docs.docker.com/go/dockerfile-reference/
+
+# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
+
+ARG NODE_VERSION=3.3.1
+
+FROM node:${NODE_VERSION}-alpine
+
+# Use production node environment by default.
 ENV NODE_ENV production
-RUN npm install && npm install -g vite
-CMD ["vite","preview","--port","5000"]
+
+
+WORKDIR /usr/src/app
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=cache,target=/root/.npm \
+    npm ci --omit=dev \
+RUN npm install vite
+USER node
+
+# Copy the rest of the source files into the image.
+COPY . .
+
+# Expose the port that the application listens on.
+EXPOSE 5000
+
+CMD vite preview --port 5000
