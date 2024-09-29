@@ -14,6 +14,7 @@ WORKDIR /app
 COPY --from=build-env /app /app
 COPY package*.json ./
 RUN npm install --production
+RUN npm install vite
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 CMD ["npm", "run", "preview"]
