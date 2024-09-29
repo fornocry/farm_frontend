@@ -7,4 +7,4 @@ WORKDIR /app
 COPY --from=build-env /app /app
 ENV NODE_ENV production
 RUN npm run build && npm install -g vite
-CMD ["npm","run","preview"]
+CMD ["vite","preview","--port","5000"]
