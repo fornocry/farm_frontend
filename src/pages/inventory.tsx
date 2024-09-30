@@ -34,8 +34,8 @@ export default function InventoryPage() {
     if (isLoading) {
         return <Loading/>
     }
-    const moneyItem = userInventory?.find(item => item.plant.name === "Money");
-    const filteredInventory = userInventory?.filter(item => item.plant.name !== "Money");
+    const moneyItem = userInventory?.find(item => item.plant.key === "MONEY");
+    const filteredInventory = userInventory?.filter(item => item.plant.key !== "MONEY");
 
     return (
         <>

@@ -4,6 +4,7 @@ import {TaskPlace} from "../shared/ui/places/task_place.tsx";
 import {useUserStore} from "../features/store/userStore.ts";
 import {useEffect, useMemo} from "react";
 import {Loading} from "./loading.tsx";
+import {Task} from "../entities/task.tsx";
 
 export default function TasksPage() {
 
@@ -52,10 +53,13 @@ export default function TasksPage() {
         return <Loading/>
     }
 
-    const countDoneTimes = ({type}: { type: string }): number => {
-        switch (type) {
+    const countDoneTimes = ({task}: { task: Task }): number => {
+        switch (task.Type) {
             case "FRIENDS":
                 return userReferrals?.length || 0;
+            case "INVENTORY":
+                const needItem = userInventory?.find(item => item.plant.key === task.Data.item);
+                return needItem?.quantity || 0;
             case "SUBSCRIBE":
                 return 0;
         }
@@ -64,7 +68,7 @@ export default function TasksPage() {
 
     return (
         <>
-            <TopBarTasks total={tasks?.length || 0} />
+            <TopBarTasks total={tasks?.length || 0}/>
             <div className="relative h-20 z-30"/>
             <div
                 className="relative w-full flex flex-col items-center h-[100vh] sm:h-fit">
@@ -72,7 +76,7 @@ export default function TasksPage() {
                 <div className="w-[90%] flex-1 overflow-y-auto">
                     <div className="relative h-4 w-full"/>
                     {tasks?.map((item) => <TaskPlace key={item.task.ID} taskInfo={item}
-                                                     doneTimes={countDoneTimes({type: item.task.Type})}/>)}
+                                                     doneTimes={countDoneTimes({task: item.task})}/>)}
                 </div>
                 <div className="relative h-44 -z-20"/>
             </div>

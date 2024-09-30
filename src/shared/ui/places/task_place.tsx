@@ -31,7 +31,7 @@ export function TaskPlace({taskInfo, doneTimes}: { taskInfo: TaskInfo, doneTimes
 
                 const handleVisibilityChange = async () => {
                     if (document.visibilityState === 'visible') {
-                        await apiCheckTask({ taskId: taskInfo.task.ID, claim });
+                        await apiCheckTask({taskId: taskInfo.task.ID, claim});
                         document.removeEventListener('visibilitychange', handleVisibilityChange);
                     }
                 };

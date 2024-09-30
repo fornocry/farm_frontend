@@ -20,12 +20,14 @@ export enum TaskComplete {
 
 export enum TaskType {
     FRIENDS = 'FRIENDS', // Use a string representation for NULL
-    SUBSCRIBE = 'SUBSCRIBE'
+    SUBSCRIBE = 'SUBSCRIBE',
+    INVENTORY = 'INVENTORY'
 }
 
 export const navTypeMap = {
     [TaskType.FRIENDS]: "/svgs/check_icon.svg",
-    [TaskType.SUBSCRIBE]: "/svgs/navarrow.svg"
+    [TaskType.SUBSCRIBE]: "/svgs/navarrow.svg",
+    [TaskType.INVENTORY]: "/svgs/check_icon.svg"
 };
 
 export enum TaskType {

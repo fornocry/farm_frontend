@@ -8,7 +8,8 @@ export function isPlantKey(key: string): key is PlantKey {
 
 export const plants: Record<PlantKey, Plant> = {
     ROSE: {
-        name: "Roses",
+        key: "ROSE",
+        name: "Rose",
         text_color: '#ed4069',
         place_color: '#f5d4d3',
         icon: "/images/assets/rose.gif",
@@ -16,6 +17,7 @@ export const plants: Record<PlantKey, Plant> = {
         border: "var(--rose-gradient, #BBF250)"
     },
     SUNFLOWER: {
+        key: "SUNFLOWER",
         name: "Sunflower",
         text_color: '#A78B09',
         place_color: 'rgba(189, 84, 0, 0.17)',
@@ -24,6 +26,7 @@ export const plants: Record<PlantKey, Plant> = {
         border: "yellow"
     },
     STRAWBERRY: {
+        key: "STRAWBERRY",
         name: "Strawberry",
         text_color: '#9D2323',
         place_color: 'rgba(218, 88, 87, 0.26)',
@@ -32,6 +35,7 @@ export const plants: Record<PlantKey, Plant> = {
         border: "red"
     },
     CHRISTMAS_TREE: {
+        key: "CHRISTMAS_TREE",
         name: "Christmas tree",
         text_color: '#006C2E',
         place_color: 'rgba(0, 108, 46, 0.24)',
@@ -40,6 +44,7 @@ export const plants: Record<PlantKey, Plant> = {
         border: "green"
     },
     MONEY: {
+        key: "MONEY",
         name: "Money",
         text_color: '#000000',
         place_color: 'rgba(197, 197, 197, 0.26)',

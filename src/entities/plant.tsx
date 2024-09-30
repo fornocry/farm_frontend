@@ -1,4 +1,5 @@
 export interface Plant {
+    key: string;
     name: string;// Optional property
     text_color: string;
     place_color: string;
