@@ -13,13 +13,13 @@ export interface TaskResponse {
 }
 
 export enum TaskComplete {
-    NULL = 'TASK_COMPLETE_NULL', // Use a string representation for NULL
+    NULL = 'TASK_COMPLETE_NULL',
     DONE = 'TASK_COMPLETE_DONE',
     FINISHED = 'TASK_COMPLETE_FINISHED'
 }
 
 export enum TaskType {
-    FRIENDS = 'FRIENDS', // Use a string representation for NULL
+    FRIENDS = 'FRIENDS',
     SUBSCRIBE = 'SUBSCRIBE',
     INVENTORY = 'INVENTORY'
 }
@@ -29,7 +29,3 @@ export const navTypeMap = {
     [TaskType.SUBSCRIBE]: "/svgs/navarrow.svg",
     [TaskType.INVENTORY]: "/svgs/check_icon.svg"
 };
-
-export enum TaskType {
-
-}

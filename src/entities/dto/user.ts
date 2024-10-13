@@ -13,6 +13,7 @@ export interface UserUpgrades {
 export interface UserField {
     FieldID: number;
     Plant: string;
+    PlantTime: number;
 }
 
 export interface UserReferral {

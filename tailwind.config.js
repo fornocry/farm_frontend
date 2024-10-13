@@ -17,6 +17,9 @@ export default {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
             },
+            backgroundImage: {
+                'main-bg': 'linear-gradient(180deg, #61898d, #BBF5DF)',
+            },
             fontFamily: {
                 neueMontreal: ['NeueMontreal', 'sans-serif'],
             },

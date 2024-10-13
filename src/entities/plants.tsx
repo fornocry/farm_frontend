@@ -1,4 +1,6 @@
-import {Plant} from "./plant.tsx";
+import {Plant, PlantProgress} from "./plant.tsx";
+
+const millisecondsInAnHour = 60 * 60; // 60 minutes * 60 seconds * 1000 milliseconds
 
 export type PlantKey = 'ROSE' | 'SUNFLOWER' | 'STRAWBERRY' | 'CHRISTMAS_TREE' | 'MONEY';
 
@@ -53,3 +55,26 @@ export const plants: Record<PlantKey, Plant> = {
         border: "#09CE3B"
     }
 };
+
+export const plantProgressInfo: Record<PlantKey, PlantProgress> = {
+    ROSE: {
+        growTime: millisecondsInAnHour * 5,
+        rewards: 1,
+    },
+    SUNFLOWER: {
+        growTime: millisecondsInAnHour * 5,
+        rewards: 2,
+    },
+    STRAWBERRY: {
+        growTime: millisecondsInAnHour * 5,
+        rewards: 1,
+    },
+    CHRISTMAS_TREE: {
+        growTime: millisecondsInAnHour * 5,
+        rewards: 1,
+    },
+    MONEY: {
+        growTime: millisecondsInAnHour * 5,
+        rewards: 1,
+    }
+}

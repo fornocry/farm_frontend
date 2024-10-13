@@ -1,56 +1,43 @@
-import FarmPlace from "../../shared/ui/places/farm_place.tsx";
-import {isPlantKey, plants} from "../../entities/plants.tsx";
+import FarmPlace from "../../shared/ui/places/farmPlace.tsx";
+import {isPlantKey, plantProgressInfo, plants} from "../../entities/plants.tsx";
 import {useUserStore} from "../../features/store/userStore.ts";
 import {useEffect, useMemo} from "react";
 import {Loading} from "../loading.tsx";
 
-
-const placesPositions = {
-    0: "mt-[15%] ml-[55%]",
-    1: "mt-[35%] ml-[50%]",
-    2: "mt-[55%] ml-[25%]",
-    3: "mt-[-17%] ml-[0%]"
-}
+const placesPositions = [
+    "mt-[15%] ml-[55%]",
+    "mt-[35%] ml-[50%]",
+    "mt-[55%] ml-[25%]",
+    "mt-[-17%] ml-[0%]",
+];
 
 export default function Level1() {
-
-    const {
-        user,
-        apiLogin,
-        userFields,
-        apiGetFields,
-    } = useUserStore();
+    const {user, apiLogin, userFields, apiGetFields} = useUserStore();
 
     useEffect(() => {
-        if (user === null) {
-            apiLogin();
-        }
-    }, []);
+        if (!user) apiLogin();
+    }, [user, apiLogin]);
+
     useEffect(() => {
-        if (userFields === null && user !== null) {
-            apiGetFields();
-        }
-    }, [user, apiGetFields]);
+        if (!userFields && user) apiGetFields();
+    }, [user, userFields, apiGetFields]);
 
-    const isLoading = useMemo(() => {
-        return user === null || userFields === null;
-    }, [user, userFields]);
+    const isLoading = useMemo(() => !user || !userFields, [user, userFields]);
 
-    if (isLoading) {
-        return <Loading/>
-    }
+    if (isLoading) return <Loading/>;
 
     const filterById = (id: number) => {
-        const foundItem = (userFields || []).find(item => item.FieldID === id);
+        const foundItem = userFields?.find(item => item.FieldID === id);
         if (foundItem && isPlantKey(foundItem.Plant)) {
             return {
+                FieldID: foundItem.FieldID,
+                PlantTime: foundItem.PlantTime,
                 plant: plants[foundItem.Plant],
-                progress: 10
-            }
+                progress: plantProgressInfo[foundItem.Plant],
+            };
         }
-        return null; // Return the found item or null if not found
+        return null;
     };
-
 
     return (
         <>
@@ -65,20 +52,13 @@ export default function Level1() {
                     <img className="animate-float" src='/images/lands/land_level_1.png' alt="land_lvl_1"/>
                 </div>
                 <div className="absolute w-[90%] aspect-square">
-                    <div className={placesPositions[0]}>
-                        <FarmPlace plantInfo={filterById(0)}/>
-                    </div>
-                    <div className={placesPositions[1]}>
-                        <FarmPlace plantInfo={filterById(1)}/>
-                    </div>
-                    <div className={placesPositions[2]}>
-                        <FarmPlace plantInfo={filterById(2)}/>
-                    </div>
-                    <div className={placesPositions[3]}>
-                        <FarmPlace plantInfo={filterById(3)}/>
-                    </div>
+                    {placesPositions.map((position, index) => (
+                        <div className={position} key={index}>
+                            <FarmPlace fieldInfo={filterById(index)} id={index}/>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>
-    )
+    );
 }

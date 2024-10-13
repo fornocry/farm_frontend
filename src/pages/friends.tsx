@@ -1,6 +1,6 @@
 import NavBar from "../shared/ui/navbar.tsx";
 import {TopBarFriends} from "../shared/ui/topbars.tsx";
-import FriendPlace, {InviteFriend} from "../shared/ui/places/friend_place.tsx";
+import FriendPlace, {InviteFriend} from "../shared/ui/places/friendPlace.tsx";
 import {useUserStore} from "../features/store/userStore.ts";
 import {useEffect, useMemo} from "react";
 import {Loading} from "./loading.tsx";
@@ -25,7 +25,7 @@ export default function FriendsPage() {
         if (userReferrals === null && user !== null) {
             apiGetReferrals();
         }
-    }, [user, apiGetReferrals]);
+    }, [user]);
 
 
     const isLoading = useMemo(() => {

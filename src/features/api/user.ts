@@ -32,7 +32,18 @@ export async function APIGetUpgrades(): Promise<UserUpgrades> {
 }
 
 export async function APIGetFields(): Promise<Array<UserField>> {
-    const response = await axios.get('/api/v1/user/fields');
+    const response = await axios.get('/api/v1/inventory/fields');
+    return response.data;
+}
+
+export async function APIPlantField(fieldID: number, plant: string): Promise<UserField> {
+    const params = {
+        fieldID: fieldID,
+        plant: plant,
+    }
+    const response = await axios.get('/api/v1/inventory/plant', {
+        params: params,
+    })
     return response.data;
 }
 
@@ -41,7 +52,7 @@ export async function APIGetReferrals(): Promise<Array<UserReferral>> {
     return response.data;
 }
 
-export async function APICheckTask({taskId, claim}: { taskId: string, claim: boolean }): Promise<TaskResponse> {
+export async function APICheckTask(taskId: string, claim: boolean): Promise<TaskResponse> {
     const link = claim ? "/api/v1/tasks/claim" : "/api/v1/tasks/check"
     const params = {
         taskId: taskId,

@@ -1,14 +1,13 @@
-import path from "path";
-
 import react from "@vitejs/plugin-react";
 import viteCompression from 'vite-plugin-compression';
 import {defineConfig} from "vite";
+import {ViteImageOptimizer} from "vite-plugin-image-optimizer";
 
 export default defineConfig({
-    plugins: [react(), viteCompression()],
-    resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "./src"),
-        },
-    },
+    plugins: [react(),
+        viteCompression(),
+        ViteImageOptimizer({
+            /* pass your config */
+        }),],
+    resolve: {},
 });

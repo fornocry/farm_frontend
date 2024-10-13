@@ -8,9 +8,16 @@ export interface Plant {
     border: string;
 }
 
+export interface PlantProgress {
+    growTime: number;
+    rewards: number;
+}
+
 export interface FieldInfo {
+    FieldID: number;
+    PlantTime: number;
     plant: Plant;
-    progress: number;
+    progress: PlantProgress;
 }
 
 export interface InventoryInfo {
