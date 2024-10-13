@@ -15,11 +15,11 @@ const pageTransition = {
 
 const UpAnim = ({children}: { children: React.ReactNode }) => (
     <motion.div
-        style={{ width: '100%' }}
-        initial={{ y: '100%', opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 0, opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
     >
         {children}
     </motion.div>
