@@ -14,7 +14,7 @@ export function TopBarFarm({username, balance}: { username: string, balance: num
                         </div>
                         <div className="ml-4 flex flex-col font-NeueHaas w-1/2 ">
                             <p className="text-white text-base font-medium leading-normal">{username}</p>
-                            <p className="text-tribeText text-sm font-medium leading-normal">$$$camers tribe</p>
+                            <p className="text-tribeText text-sm font-medium leading-normal">No squad</p>
                         </div>
                     </div>
                     <div className="flex items-center justify-center mr-4 h-full">
