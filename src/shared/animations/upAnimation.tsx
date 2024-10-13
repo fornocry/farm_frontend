@@ -1,8 +1,8 @@
 import {motion} from 'framer-motion';
 
 const pageVariants = {
-    initial: {opacity: 0, y: 1200},
-    in: {opacity: 1, y: 300},
+    initial: {opacity: 0, y: '100%'},
+    in: {opacity: 1, y: 0},
     out: {opacity: 0, y: 600}
 };
 
@@ -11,7 +11,6 @@ const pageTransition = {
     duration: 0.3,
     ease: "easeInOut"
 };
-
 
 const UpAnim = ({children}: { children: React.ReactNode }) => (
     <motion.div
